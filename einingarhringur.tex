@@ -1,0 +1,137 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[pdftex,margin=2cm]{geometry}
+\usepackage[icelandic]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{nicefrac}
+\usepackage{pxfonts}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+
+\pdfinfo{
+   /Author (Benedikt Bjarni Bogason)
+   /Title  (Einingarhringurinn)
+   /CreationDate (20101031)
+   /Subject (Einingarhringur)
+}
+
+
+\renewcommand{\familydefault}{\sfdefault}
+%\renewcommand{\baselinestretch}{1.4}
+
+\pagestyle{fancy}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\headheight}{15pt}
+
+
+\setlength{\parindent}{0pt}
+
+
+
+\begin{document}
+%\maketitle
+%\setlength{\columnseprule}{0pt}
+%\setlength{\mathsurround}{3.5pt}
+{ \Huge \bf Einingarhringur}\\
+Fjölbrautaskólinn í Garðabæ~~2010
+\vspace{2.5cm}
+
+%\large
+
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm,scale=6.5]
+\draw[->] (-1.25,0) -- (1.25,0) node[right]{$x$};
+\draw[->] (0,-1.25) -- (0,1.25) node[above]{$y$} ;
+\draw[ultra thick] (0,0) circle(1);
+\foreach \angle in {0,15,...,360} {\pgfpathcircle{\pgfpointpolar{\angle}{1cm}}{0.5pt}}
+%\foreach \angle in {0,45,...,360} {\pgfpathcircle{\pgfpointpolar{\angle}{1cm}}{0.5pt}}
+\pgfusepath{fill}
+%
+\foreach \horn / \label / \rad in 
+{ 
+15//\dfrac{\pi}{12}, 
+30/\left(\dfrac{\sqrt{3}}{2};\dfrac{1}{2}\right)/\dfrac{\pi}{6}, 
+45/\left(\dfrac{\sqrt{2}}{2};\dfrac{\sqrt{2}}{2}\right)/\dfrac{\pi}{4}, 
+60/\left(\dfrac{1}{2};\dfrac{\sqrt{3}}{2}\right)/\dfrac{\pi}{3}, 
+75//\dfrac{5\pi}{12}, 
+285//\dfrac{19\pi}{12}, 
+300/\left(\dfrac{1}{2};-\dfrac{\sqrt{3}}{2}\right)/\dfrac{5\pi}{3}, 
+315/\left(\dfrac{\sqrt{2}}{2};-\dfrac{\sqrt{2}}{2}\right)/\dfrac{7\pi}{4}, 
+330/\left(\dfrac{\sqrt{3}}{2};-\dfrac{1}{2}\right)/\dfrac{11\pi}{6},
+345//\dfrac{23\pi}{12}} 
+{
+	\draw (\horn:1.00cm) node[right,rotate=\horn]{$\label$};
+	\draw (\horn:0.85) node[left,rotate=\horn]{$\horn^\circ$};
+	\draw (\horn:0.92) node[rotate=\horn]{$\rad$};
+}
+\foreach \horn / \label / \rad in 
+{ 
+105//\dfrac{7\pi}{12}, 
+120/\left(-\dfrac{1}{2};\dfrac{\sqrt{3}}{2}\right)/\dfrac{2\pi}{3}, 
+135/\left(-\dfrac{\sqrt{2}}{2};\dfrac{\sqrt{2}}{2}\right)/\dfrac{3\pi}{4}, 
+150/\left(-\dfrac{\sqrt{3}}{2};\dfrac{1}{2}\right)/\dfrac{5\pi}{6}, 
+165//\dfrac{11\pi}{12}, 
+195//\dfrac{13\pi}{12}, 
+210/\left(-\dfrac{\sqrt{3}}{2};-\dfrac{1}{2}\right)/\dfrac{7\pi}{6}, 
+225/\left(-\dfrac{\sqrt{2}}{2};-\dfrac{\sqrt{2}}{2}\right)/\dfrac{5\pi}{4}, 
+240/\left(-\dfrac{1}{2};-\dfrac{\sqrt{3}}{2}\right)/\dfrac{4\pi}{3},
+255//\dfrac{17\pi}{12}} 
+{
+	\draw (\horn:1.0cm) node[left,rotate=\horn-180]{$\label$};
+	\draw (\horn:0.85) node[right,rotate=\horn-180]{$\horn^\circ$};
+	\draw (\horn:0.92) node[rotate=\horn-180]{$\rad$};
+}
+\foreach \horn / \label / \rad in 
+{0/(1;0)/0}
+{
+	\draw (\horn-2:1.0cm) node[right,rotate=\horn-15]{$\label$};
+	\draw (\horn+3:0.85) node[left]{$\horn^\circ$};
+	\draw (\horn+3:0.92) node{$\rad$};
+}
+\foreach \horn / \label / \rad in 
+{90/(0;1)/\dfrac{\pi}{2}}
+{
+	\draw (\horn-2:1.0cm) node[right,rotate=75]{$\label$};
+	\draw (\horn-3:0.85) node[left,rotate=\horn]{$\horn^\circ$};
+	\draw (\horn-5:0.92) node[rotate=\horn]{$\rad$};
+}
+\foreach \horn / \label / \rad in 
+{180/(-1;0)/\pi}
+{
+	\draw (\horn-2:1.0cm) node[left,rotate=-15]{$\label$};
+	\draw (\horn-3:0.85) node[right]{$\horn^\circ$};
+	\draw (\horn-3:0.92) node{$\rad$};
+}
+\foreach \horn / \label / \rad in 
+{270/(0;-1)/\dfrac{3\pi}{2}}
+{
+	\draw (\horn-2:1.0cm) node[left,rotate=75]{$\label$};
+	\draw (\horn-3:0.85) node[right,rotate=\horn-180]{$\horn^\circ$};
+	\draw (\horn-5:0.92) node[rotate=\horn-180]{$\rad$};
+}
+\foreach \horn / \label / \rad in 
+{360/(1;0)/2\pi}
+{
+	\draw (\horn-3:0.85) node[left]{$\horn^\circ$};
+	\draw (\horn-3:0.92) node{$\rad$};
+}
+
+\draw (45:0.35) node{I};
+\draw (135:0.35) node{II};
+\draw (225:0.35) node{III};
+\draw (315:0.35) node{IV};
+
+\draw (90:0.5) node[above,rotate=90]{$\sin$};
+\draw (0:0.5) node[above,rotate=0]{$\cos$};
+
+\end{tikzpicture}
+
+
+
+
+\end{document}
